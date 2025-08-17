@@ -5,7 +5,13 @@
         <field name="implied_ids" eval="[(3, ref('maintenance.group_equipment_manager'))]"/>
     </record>
 
-        <!-- Create a new module category for Maintenance Management -->
+
+    <record id="maintenance.menu_maintenance_title" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6, 0, [ref('maintenance.group_equipment_manager')])]"/>
+    </record>
+
+
+    <!-- Create a new module category for Maintenance Management -->
     <record id="module_category_employee_maintenance" model="ir.module.category">
         <field name="name">Maintenance Management</field>
         <field name="sequence">11</field>
@@ -26,7 +32,7 @@
         <field name="category_id" ref="module_category_employee_maintenance"/>
     </record>
 
-        <!-- Admin Rule: Admins can access all records of maintenance.request.custom -->
+    <!-- Admin Rule: Admins can access all records of maintenance.request.custom -->
     <record id="maintenance_request_custom_rule_admin" model="ir.rule">
         <field name="name">Maintenance Request Custom Admin Access</field>
         <field name="model_id" ref="model_maintenance_request_custom"/>
@@ -34,7 +40,7 @@
         <field name="groups" eval="[(4, ref('group_maintenance_employee_admin'))]"/>
     </record>
 
-        <!-- Admin Rule: Admins have full CRUD on standard maintenance requests -->
+    <!-- Admin Rule: Admins have full CRUD on standard maintenance requests -->
     <record id="maintenance_request_admin_all_access_rule" model="ir.rule">
         <field name="name">Maintenance Request Admin All Access</field>
         <field name="model_id" ref="maintenance.model_maintenance_request"/>
@@ -46,7 +52,7 @@
         <field name="perm_unlink" eval="1"/>
     </record>
 
-        <!-- User Rule: Users can access only maintenance requests of their own department -->
+    <!-- User Rule: Users can access only maintenance requests of their own department -->
     <record id="maintenance_request_custom_rule_user" model="ir.rule">
         <field name="name">Maintenance Request Custom User Access</field>
         <field name="model_id" ref="model_maintenance_request_custom"/>
