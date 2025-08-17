@@ -1,0 +1,59 @@
+<odoo>
+
+    <!-- Remove implied group: HR users will no longer automatically have Equipment Manager rights -->
+    <record id="hr.group_hr_user" model="res.groups">
+        <field name="implied_ids" eval="[(3, ref('maintenance.group_equipment_manager'))]"/>
+    </record>
+
+        <!-- Create a new module category for Maintenance Management -->
+    <record id="module_category_employee_maintenance" model="ir.module.category">
+        <field name="name">Maintenance Management</field>
+        <field name="sequence">11</field>
+    </record>
+
+    <!-- Admin Group - Full Access -->
+    <record id="group_maintenance_employee_admin" model="res.groups">
+        <field name="name">Maintenance - Admin</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="module_category_employee_maintenance"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <!-- User Group - Limited Access -->
+    <record id="group_maintenance_employee_user" model="res.groups">
+        <field name="name">Maintenance - User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="module_category_employee_maintenance"/>
+    </record>
+
+        <!-- Admin Rule: Admins can access all records of maintenance.request.custom -->
+    <record id="maintenance_request_custom_rule_admin" model="ir.rule">
+        <field name="name">Maintenance Request Custom Admin Access</field>
+        <field name="model_id" ref="model_maintenance_request_custom"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_maintenance_employee_admin'))]"/>
+    </record>
+
+        <!-- Admin Rule: Admins have full CRUD on standard maintenance requests -->
+    <record id="maintenance_request_admin_all_access_rule" model="ir.rule">
+        <field name="name">Maintenance Request Admin All Access</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_maintenance_employee_admin'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+        <!-- User Rule: Users can access only maintenance requests of their own department -->
+    <record id="maintenance_request_custom_rule_user" model="ir.rule">
+        <field name="name">Maintenance Request Custom User Access</field>
+        <field name="model_id" ref="model_maintenance_request_custom"/>
+        <field name="domain_force">[('department_id', '=', user.employee_id.department_id.id)]</field>
+        <field name="groups" eval="[(4, ref('group_maintenance_employee_user'))]"/>
+
+
+    </record>
+
+</odoo>

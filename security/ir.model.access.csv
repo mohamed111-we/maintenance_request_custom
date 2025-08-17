@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_maintenance_request_custom_user,maintenance.request.custom.user,model_maintenance_request_custom,group_maintenance_employee_user,1,1,1,0
+access_maintenance_request_custom_admin,maintenance.request.custom.admin,model_maintenance_request_custom,group_maintenance_employee_admin,1,1,1,1
+access_maintenance_request_admin,maintenance.request.admin,maintenance.model_maintenance_request,group_maintenance_employee_admin,1,1,1,1
+access_maintenance_request_admin,maintenance.team.admin,maintenance.model_maintenance_team,group_maintenance_employee_admin,1,1,1,1

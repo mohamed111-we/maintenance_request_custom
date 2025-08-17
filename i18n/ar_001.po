@@ -1,0 +1,738 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* maintenance_request_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-16 12:31+0000\n"
+"PO-Revision-Date: 2025-08-16 12:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "<span class=\"badge text-bg-warning float-end\">Cancelled</span>"
+msgstr "<span class=\"badge text-bg-warning float-end\">ملغى</span>"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "<span class=\"ml8\">hours</span>"
+msgstr "<span class=\"ml8\">ساعات</span>"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_needaction
+msgid "Action Needed"
+msgstr "إجراء مطلوب"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_ids
+msgid "Activities"
+msgstr "الأنشطة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "زخرفة استثناء النشاط"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "أيقونة نوع النشاط"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__archive
+msgid "Archived"
+msgstr "مؤرشف"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__available_technician_ids
+msgid "Available Technicians"
+msgstr "الفنيون المتاحون"
+
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__kanban_state__blocked
+msgid "Blocked"
+msgstr "محظور"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_kanban
+msgid "Cancelled"
+msgstr "ملغى"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__category_id
+msgid "Category"
+msgstr "الفئة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__close_date
+msgid "Close Date"
+msgstr "تاريخ الإغلاق"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__color
+msgid "Color Index"
+msgstr "مؤشر اللون"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__maintenance_type__corrective
+msgid "Corrective"
+msgstr "تصحيحي"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__owner_user_id
+msgid "Created by User"
+msgstr "أنشئ بواسطة المستخدم"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: maintenance_request_custom
+#: model:ir.model,name:maintenance_request_custom.model_maintenance_request_custom
+msgid "Custom Maintenance Request"
+msgstr "طلب صيانة مخصص"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__schedule_date
+msgid "Date the maintenance team plans the maintenance."
+msgstr "تاريخ تخطيط فريق الصيانة للصيانة."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__close_date
+msgid "Date the maintenance was finished."
+msgstr "تاريخ انتهاء الصيانة."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__repeat_unit__day
+msgid "Days"
+msgstr "أيام"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_kanban
+msgid "Delete"
+msgstr "حذف"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__department_id
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__department_id
+msgid "Department"
+msgstr "القسم"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__duration
+msgid "Duration"
+msgstr "المدة"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_kanban
+msgid "Edit..."
+msgstr "تعديل..."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__email_cc
+msgid "Email CC"
+msgstr "نسخة بريد إلكتروني"
+
+#. module: maintenance_request_custom
+#: model:ir.ui.menu,name:maintenance_request_custom.menu_maintenance_custom_requests_parent
+msgid "Employee Requests"
+msgstr "طلبات الموظفين"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__equipment_id
+msgid "Equipment"
+msgstr "المعدات"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Example: Screen not working"
+msgstr "مثال: الشاشة لا تعمل"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (شركاء)"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "أيقونة Font Awesome مثل fa-tasks"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__repeat_type__forever
+msgid "Forever"
+msgstr "للأبد"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__instruction_google_slide
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__instruction_type__google_slide
+msgid "Google Slide"
+msgstr "عرض تقديمي من Google"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Google Slide Link"
+msgstr "رابط عرض تقديمي من Google"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__has_message
+msgid "Has Message"
+msgstr "لديه رسالة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__priority__3
+msgid "High"
+msgstr "عالي"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_exception_icon
+msgid "Icon"
+msgstr "الأيقونة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "أيقونة للإشارة إلى نشاط استثنائي."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "إذا تم تحديده، تتطلب الرسائل الجديدة انتباهك."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_has_error
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا تم تحديده، فإن بعض الرسائل بها خطأ في التسليم."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__kanban_state__normal
+msgid "In Progress"
+msgstr "قيد التقدم"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__instruction_type
+msgid "Instruction"
+msgstr "التعليمات"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Instructions"
+msgstr "التعليمات"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Internal notes"
+msgstr "ملاحظات داخلية"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_is_follower
+msgid "Is Follower"
+msgstr "متابع"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__kanban_state
+msgid "Kanban State"
+msgstr "حالة كانبان"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__maintenance_request_id
+msgid "Linked Original Request"
+msgstr "طلب أصلي مرتبط"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__priority__1
+msgid "Low"
+msgstr "منخفض"
+
+#. module: maintenance_request_custom
+#: model:res.groups,name:maintenance_request_custom.group_maintenance_employee_admin
+msgid "Maintenance - Admin"
+msgstr "الصيانة - مسؤول"
+
+#. module: maintenance_request_custom
+#: model:res.groups,name:maintenance_request_custom.group_maintenance_employee_user
+msgid "Maintenance - User"
+msgstr "الصيانة - مستخدم"
+
+#. module: maintenance_request_custom
+#: model:ir.module.category,name:maintenance_request_custom.module_category_employee_maintenance
+msgid "Maintenance Management"
+msgstr "إدارة الصيانة"
+
+#. module: maintenance_request_custom
+#: model:ir.model,name:maintenance_request_custom.model_maintenance_request
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Maintenance Request"
+msgstr "طلب الصيانة"
+
+#. module: maintenance_request_custom
+#: model:ir.actions.act_window,name:maintenance_request_custom.action_maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_activity
+msgid "Maintenance Requests"
+msgstr "طلبات الصيانة"
+
+#. module: maintenance_request_custom
+#: model:ir.model,name:maintenance_request_custom.model_maintenance_team
+msgid "Maintenance Teams"
+msgstr "فرق الصيانة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__maintenance_type
+msgid "Maintenance Type"
+msgstr "نوع الصيانة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__repeat_unit__month
+msgid "Months"
+msgstr "أشهر"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "موعد النشاط الخاص بي"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "New Maintenance Request: %s"
+msgstr "طلب صيانة جديد: %s"
+
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "New Custom Maintenance Request: %s"
+msgstr "طلب صيانة مخصص جديد: %s"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "الفعالية القادمة في التقويم"
+
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "موعد النشاط التالي"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__priority__2
+msgid "Normal"
+msgstr "عادي"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__description
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "عدد الرسائل التي تتطلب إجراءً"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__instruction_pdf
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__instruction_type__pdf
+msgid "PDF"
+msgstr "ملف PDF"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__instruction_google_slide
+msgid ""
+"Paste the url of your Google Slide. Make sure the access to the document is "
+"public."
+msgstr ""
+"الصق رابط عرض Google التقديمي الخاص بك. تأكد من أن الوصول إلى المستند عام."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__maintenance_type__preventive
+msgid "Preventive"
+msgstr "وقائي"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__priority
+msgid "Priority"
+msgstr "الأولوية"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__kanban_state__done
+msgid "Ready for next stage"
+msgstr "جاهز للمرحلة التالية"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__recurring_maintenance
+msgid "Recurrent"
+msgstr "متكرر"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Reopen Request"
+msgstr "إعادة فتح الطلب"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__repeat_interval
+msgid "Repeat Every"
+msgstr "كرر كل"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__repeat_type
+msgid "Repeat Type"
+msgstr "نوع التكرار"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__repeat_until
+msgid "Repeat Until"
+msgstr "كرر حتى"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__name
+msgid "Request"
+msgstr "طلب"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__request_date
+msgid "Request Date"
+msgstr "تاريخ الطلب"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_kanban
+msgid "Requested by:"
+msgstr "طلب بواسطة:"
+
+#. module: maintenance_request_custom
+#: model:ir.ui.menu,name:maintenance_request_custom.menu_maintenance_custom_requests_action
+msgid "Requests"
+msgstr "الطلبات"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__responsible_employee_id
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__employee_id
+msgid "Responsible Employee"
+msgstr "الموظف المسؤول"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_user_id
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤول"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطأ في تسليم الرسائل القصيرة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__schedule_date
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__scheduled_date
+msgid "Scheduled Date"
+msgstr "التاريخ المحدد"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__stage_id
+msgid "Stage"
+msgstr "المرحلة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"الحالة بناءً على الأنشطة\n"
+"متأخر: تاريخ الاستحقاق قد مر\n"
+"اليوم: تاريخ النشاط هو اليوم\n"
+"مخطط: أنشطة مستقبلية."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__maintenance_team_id
+msgid "Team"
+msgstr "الفريق"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_team__member_ids
+msgid "Team Members"
+msgstr "أعضاء الفريق"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__instruction_text
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__instruction_type__text
+msgid "Text"
+msgstr "نص"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع النشاط الاستثنائي المسجل."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__repeat_unit
+msgid "Unit"
+msgstr "الوحدة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__repeat_type__until
+msgid "Until Date"
+msgstr "حتى التاريخ"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Upload your PDF file."
+msgstr "قم بتحميل ملف PDF الخاص بك."
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__priority__0
+msgid "Very Low"
+msgstr "منخفض جدًا"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__website_message_ids
+msgid "Website communication history"
+msgstr "سجل اتصالات الموقع"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__repeat_unit__week
+msgid "Weeks"
+msgstr "أسابيع"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__repeat_unit__year
+msgid "Years"
+msgstr "سنوات"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Your instructions"
+msgstr "تعليماتك"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_graph
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_pivot
+msgid "maintenance Request"
+msgstr "طلب الصيانة"
+
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "A New Maintenance Request Has Been Created. Please Review And Follow Up."
+msgstr "تم إنشاء طلب صيانة جديد. يرجى المراجعة والمتابعة."
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Request Name"
+msgstr "اسم الطلب"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Equipment"
+msgstr "الجهاز"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Priority"
+msgstr "الأولوية"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Scheduled Date"
+msgstr "التاريخ المجدول"
+
+
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Open Custom Request"
+msgstr "فتح الطلب المخصص"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Open Original Request"
+msgstr "افتح الطلب الأصلي"
+
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "It was completed"
+msgstr "تم الانتهاء منه"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Finish the maintenance request."
+msgstr "إنهاء طلب الصيانة."
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "New Custom Maintenance Request:"
+msgstr "طلب صيانة مخصص جديد:"
+
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Please archive the application or continue with any remaining tasks."
+msgstr "يرجى أرشفة التطبيق أو متابعة أي مهام متبقية"
+
+
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "🔧 Order status: Expired"
+msgstr "🔧 حالة الطلب: منتهي الصلاحية"
+
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "New maintenance request created for your department"
+msgstr "تم إنشاء طلب صيانة جديد لقسمك"
+
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "New Maintenance Request for %s"
+msgstr "طلب صيانة جديد للقسم: %s"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "New maintenance request created for your department:"
+msgstr "تم إنشاء طلب صيانة جديد لقسمك:"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Request"
+msgstr "الطلب"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Equipment"
+msgstr "المعدة"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "Priority"
+msgstr "الأولوية"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "View Request"
+msgstr "عرض الطلب"
+
