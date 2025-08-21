@@ -3,3 +3,6 @@ access_maintenance_request_custom_user,maintenance.request.custom.user,model_mai
 access_maintenance_request_custom_admin,maintenance.request.custom.admin,model_maintenance_request_custom,group_maintenance_employee_admin,1,1,1,1
 access_maintenance_request_admin,maintenance.request.admin,maintenance.model_maintenance_request,group_maintenance_employee_admin,1,1,1,1
 access_maintenance_request_admin,maintenance.team.admin,maintenance.model_maintenance_team,group_maintenance_employee_admin,1,1,1,1
+access_equipment_catalogue,equipment.catalogue,model_equipment_catalogue,,1,1,1,1
+access_maintenance_technician_line,equipment.maintenance_technician_line,model_maintenance_technician_line,,1,1,1,1
+access_maintenance_request_line,equipment.maintenance_request_line,model_maintenance_request_line,,1,1,1,1

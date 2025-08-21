@@ -27,6 +27,54 @@ class MaintenanceRequest(models.Model):
                                               domain="[('id', 'in', available_technician_ids)]"
                                               )
 
+    maintenance_type = fields.Selection(selection_add=[
+        ('other_tasks', 'Other tasks')
+    ])
+
+    line_ids = fields.One2many(
+        "maintenance.request.line",
+        "request_id",
+        string="Request Lines"
+    )
+
+    machine_temperature = fields.Char(
+        string="Machine Temperature",
+        help="Record the machine temperature"
+    )
+    work_area_temperature = fields.Char(
+        string="Work Area Temperature",
+        help="Record the work area temperature"
+    )
+
+    check_motors = fields.Boolean(
+        string="Check all motors and gearboxes"
+    )
+
+    check_connections = fields.Boolean(
+        string="Check looseness connections, hoses, and pipes"
+    )
+
+    check_units = fields.Boolean(
+        string="Check input, output, and storage units"
+    )
+
+    check_filters = fields.Boolean(
+        string="Check filters"
+    )
+
+    check_screw = fields.Boolean(
+        string="Check screw conveyor"
+    )
+
+    check_compressor = fields.Boolean(
+        string="Check compressor for scale opening/closing"
+    )
+
+    check_electrical = fields.Boolean(
+        string="Check and clean all electrical components and replace if necessary"
+    )
+
+
     @api.model
     def _search(self, domain, offset=0, limit=None, order=None):
 
@@ -98,3 +146,14 @@ class MaintenanceTeam(models.Model):
         'maintenance_team_employees_rel',
         string="Team Members",
         domain="[('company_ids', 'in', company_id)]")
+
+class MaintenanceRequestLine(models.Model):
+    _name = "maintenance.request.line"
+    _description = "Maintenance Request Line"
+
+    request_id = fields.Many2one("maintenance.request", string="Maintenance Request")
+    technician_id = fields.Many2one("res.partner", string="Technician")
+    work_hours = fields.Float(string="Working Hours")
+    mc_notes = fields.Text(string="M/C Notes")
+
+

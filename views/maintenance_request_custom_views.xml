@@ -30,7 +30,7 @@
                             <field name="department_id"/>
                             <field name="request_date"/>
                             <field name="close_date" readonly="1"/>
-                            <field name="maintenance_type"/>
+                            <field name="maintenance_type" widget="radio"/>
                             <field name="archive" invisible="1"/>
                         </group>
                         <group>
@@ -42,8 +42,26 @@
                                 <field name="duration" widget="float_time" class="oe_inline"/>
                                 <span class="ml8">hours</span>
                             </div>
+                            <label for="recurring_maintenance" invisible="maintenance_type == 'corrective'"/>
+                            <div class="d-inline-flex" invisible="maintenance_type == 'corrective'">
+                                <field name="recurring_maintenance" nolabel="1" class="ms-0"
+                                       style="width: fit-content;"/>
+                            </div>
+                            <label for="repeat_interval" invisible="not recurring_maintenance"/>
+                            <div class="d-flex" invisible="not recurring_maintenance">
+                                <field name="repeat_interval" required="recurring_maintenance" class="me-2"
+                                       style="max-width: 2rem !important;"/>
+                                <field name="repeat_unit" required="recurring_maintenance" class="me-2"
+                                       style="max-width: 4rem !important;"/>
+                                <field name="repeat_type" required="recurring_maintenance" class="me-2"
+                                       style="max-width: 15rem !important;"/>
+                                <field name="repeat_until" invisible="repeat_type != 'until'"
+                                       required="repeat_type == 'until'" class="me-2"/>
+                            </div>
                             <field name="priority" widget="priority"/>
                             <field name="email_cc"/>
+                            <field name="machine_temperature"/>
+                            <field name="work_area_temperature"/>
                         </group>
                     </group>
                     <notebook>
@@ -62,6 +80,30 @@
                                 <field name="instruction_text" placeholder="Your instructions"
                                        invisible="instruction_type != 'text'" nolabel="1"/>
                             </group>
+                        </page>
+                        <page string="Preventive Maintenance Report">
+                            <group>
+                                <group>
+                                    <field name="check_motors"/>
+                                    <field name="check_connections"/>
+                                    <field name="check_units"/>
+                                    <field name="check_filters"/>
+                                </group>
+                                <group>
+                                    <field name="check_screw"/>
+                                    <field name="check_compressor"/>
+                                    <field name="check_electrical"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Maintenance Technician">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="technician_id"/>
+                                    <field name="work_hours"/>
+                                    <field name="mc_notes"/>
+                                </list>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
@@ -188,7 +230,6 @@
         <field name="res_model">maintenance.request.custom</field>
         <field name="view_mode">kanban,list,form,graph,pivot,activity</field>
     </record>
-
 
 
     <menuitem

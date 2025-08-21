@@ -8,12 +8,51 @@ from odoo.exceptions import UserError
 class MaintenanceRequestCustom(models.Model):
     _name = 'maintenance.request.custom'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = 'Custom Maintenance Request'
 
     @api.returns('self')
     def _default_stage(self):
         return self.env['maintenance.stage'].search([], limit=1)
 
-    _description = 'Custom Maintenance Request'
+    line_ids = fields.One2many('maintenance.technician.line', 'request_id')
+
+
+    check_motors = fields.Boolean(
+        string="Check all motors and gearboxes"
+    )
+
+    check_connections = fields.Boolean(
+        string="Check looseness connections, hoses, and pipes"
+    )
+
+    check_units = fields.Boolean(
+        string="Check input, output, and storage units"
+    )
+
+    check_filters = fields.Boolean(
+        string="Check filters"
+    )
+
+    check_screw = fields.Boolean(
+        string="Check screw conveyor"
+    )
+
+    check_compressor = fields.Boolean(
+        string="Check compressor for scale opening/closing"
+    )
+
+    check_electrical = fields.Boolean(
+        string="Check and clean all electrical components and replace if necessary"
+    )
+
+    machine_temperature = fields.Char(
+        string="Machine Temperature",
+        help="Record the machine temperature"
+    )
+    work_area_temperature = fields.Char(
+        string="Work Area Temperature",
+        help="Record the work area temperature"
+    )
 
     name = fields.Char(string='Request', required=True)
 
@@ -34,7 +73,8 @@ class MaintenanceRequestCustom(models.Model):
 
     maintenance_type = fields.Selection([
         ('corrective', 'Corrective'),
-        ('preventive', 'Preventive')
+        ('preventive', 'Preventive'),
+        ('other_tasks', 'Other tasks'),
     ], string="Maintenance Type", default='corrective')
 
     maintenance_team_id = fields.Many2one('maintenance.team',
@@ -104,8 +144,10 @@ class MaintenanceRequestCustom(models.Model):
          ('done', 'Ready for next stage')],
         string='Kanban State', required=True, default='normal', tracking=True)
 
-    # maintenance_request_id = fields.Many2one('maintenance.request',
-    #                                          string="Linked Original Request")
+    maintenance_request_id = fields.Many2one(
+        'maintenance.request',
+        string="Linked Original Request"
+    )
 
     recurring_maintenance = fields.Boolean(string="Recurrent",
                                            compute='_compute_recurring_maintenance',
@@ -140,6 +182,30 @@ class MaintenanceRequestCustom(models.Model):
         readonly=False,
         domain=lambda self: self._get_employee_domain()
     )
+
+    @api.onchange('equipment_id')
+    def _onchange_equipment_id(self):
+        for record in self:
+            if record.equipment_id:
+                record.check_motors = record.equipment_id.check_motors
+                record.check_connections = record.equipment_id.check_connections
+                record.check_units = record.equipment_id.check_units
+                record.check_filters = record.equipment_id.check_filters
+                record.check_screw = record.equipment_id.check_screw
+                record.check_compressor = record.equipment_id.check_compressor
+                record.check_electrical = record.equipment_id.check_electrical
+                record.machine_temperature = record.equipment_id.machine_temperature
+                record.work_area_temperature = record.equipment_id.work_area_temperature
+            else:
+                record.check_motors = False
+                record.check_connections = False
+                record.check_units = False
+                record.check_filters = False
+                record.check_screw = False
+                record.check_compressor = False
+                record.check_electrical = False
+                record.machine_temperature = ''
+                record.work_area_temperature = ''
 
     def action_assign_activity(self):
         """ إنشاء نشاط تلقائي لمدير القسم عند إنشاء طلب صيانة """
@@ -207,7 +273,141 @@ class MaintenanceRequestCustom(models.Model):
         first_stage_obj = self.env['maintenance.stage'].search([], order="sequence asc", limit=1)
         self.write({'archive': False, 'stage_id': first_stage_obj.id})
 
+    @api.model
+    def create(self, vals):
+        if 'stage_id' not in vals:
+            first_stage = self.env['maintenance.stage'].search([], order='sequence asc', limit=1)
 
+            print('first_stage>>>>>>>>>>>', first_stage)
+
+            if first_stage:
+                vals['stage_id'] = first_stage.id
+
+        # Pass close date if stage is done
+        if vals.get('stage_id'):
+            stage = self.env['maintenance.stage'].browse(vals['stage_id'])
+
+            print('stage>>>>>>>>>>>', stage.name)
+
+        record = super(MaintenanceRequestCustom, self).create(vals)
+        print("record create>>>>>>>>>>>>>>>>>>>=", record)
+
+        if record.department_id:
+            record._create_department_activity(record)
+
+        # Prepare values for linked request
+        maintenance_request_vals = {
+            'name': record.name,
+            'equipment_id': record.equipment_id.id,
+            'description': record.description,
+            'request_date': record.request_date,
+            'priority': record.priority,
+            'user_id': record.employee_id.id,
+            'responsible_employee_id': record.employee_id.id if record.employee_id else False,
+            'schedule_date': record.scheduled_date,
+            'duration': record.duration,
+            'department_id': record.department_id.id,
+            'maintenance_type': record.maintenance_type,
+            'maintenance_team_id': record.maintenance_team_id.id,
+            'instruction_type': record.instruction_type,
+            'instruction_pdf': record.instruction_pdf,
+            'repeat_interval': record.repeat_interval,
+            'instruction_google_slide': record.instruction_google_slide,
+            'instruction_text': record.instruction_text,
+            'recurring_maintenance': record.recurring_maintenance,
+            'email_cc': record.email_cc,
+            'check_motors': record.check_motors,
+            'check_connections': record.check_connections,
+            'check_units': record.check_units,
+            'check_filters': record.check_filters,
+            'check_screw': record.check_screw,
+            'check_compressor': record.check_compressor,
+            'check_electrical': record.check_electrical,
+            'machine_temperature': record.machine_temperature,
+            'line_ids': [(0, 0, {
+                'technician_id': line.technician_id.id,
+                'work_hours': line.work_hours,
+                'mc_notes': line.mc_notes
+            }) for line in record.line_ids],
+        }
+
+        linked_request = self.env['maintenance.request'].sudo().create(maintenance_request_vals)
+        record.maintenance_request_id = linked_request.id
+
+        # Attach instruction PDF if available
+        if record.instruction_type == 'pdf' and record.instruction_pdf:
+            self.env['ir.attachment'].create({
+                'name': f"{record.name}_instruction.pdf",
+                'type': 'binary',
+                'datas': record.instruction_pdf,
+                'res_model': 'maintenance.request',
+                'res_id': linked_request.id,
+                'mimetype': 'application/pdf'
+            })
+
+        # All Links
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        custom_url = f"{base_url}/web#id={record.id}&model=maintenance.request.custom&view_type=form"
+        print("record>>>>>>>>>>>>>>>>>>>=", record)
+        request_url = f"{base_url}/web#id={linked_request.id}&model=maintenance.request&view_type=form"
+
+        # Activity in maintenance.request
+        activity_note_maintenance_request = f"""
+                <p>
+                    <strong>{_("A New Maintenance Request Has Been Created. Please Review And Follow Up.")}</strong>
+                </p>
+                <ul>
+                    <li><strong>{_("Request Name")}:</strong> {record.name}</li>
+                    <li><strong>{_("Equipment")}:</strong> {record.equipment_id.name or 'N/A'}</li>
+                    <li><strong>{_("Priority")}:</strong> {dict(record._fields['priority'].selection).get(record.priority) or ' '}</li>
+                    <li><strong>{_("Scheduled Date")}:</strong> {record.scheduled_date or ' '}</li>
+                </ul>
+                <p>
+                <p>
+                🔗 <a href="{request_url}" target="_blank" style="color:#0b5394;text-decoration:underline;">{_("Open Original Request")}</a>
+            </p>
+                </p>
+            """
+        # Activity in maintenance.request.custom
+        activity_note_maintenance_request_custom = f"""
+                        <p>
+                            <strong>{_("A New Maintenance Request Has Been Created. Please Review And Follow Up.")}</strong>
+                        </p>
+                        <ul>
+                            <li><strong>{_("Request Name")}:</strong> {record.name}</li>
+                            <li><strong>{_("Equipment")}:</strong> {record.equipment_id.name or 'N/A'}</li>
+                            <li><strong>{_("Priority")}:</strong> {dict(record._fields['priority'].selection).get(record.priority) or ' '}</li>
+                            <li><strong>{_("Scheduled Date")}:</strong> {record.scheduled_date or ' '}</li>
+                        </ul>
+                        <p>
+                        <p>
+                        🔗 <a href="{custom_url}" target="_blank" style="color:#0b5394;text-decoration:underline;">{_("Open Custom Request")}</a><br/>
+                    </p>
+                        </p>
+                    """
+
+        # ⬇ إشعار في الموديل الأساسي
+        self.env['mail.activity'].create({
+            'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+            'summary': _("New Maintenance Request: %s") % record.name,
+            'note': activity_note_maintenance_request,
+            'user_id': record.employee_id.user_id.id if record.employee_id else self.env.uid,
+            'res_id': linked_request.id,
+            'res_model_id': self.env['ir.model']._get_id('maintenance.request'),
+            'date_deadline': fields.Date.today(),
+        })
+
+        # ⬇ إشعار في الموديل الـ Custom
+        self.env['mail.activity'].create({
+            'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+            'summary': _("New Custom Maintenance Request: %s") % record.name,
+            'note': activity_note_maintenance_request_custom,
+            'user_id': record.employee_id.user_id.id if record.employee_id else self.env.uid,
+            'res_id': record.id,
+            'res_model_id': self.env['ir.model']._get_id('maintenance.request.custom'),
+            'date_deadline': fields.Date.today(),
+        })
+        return record
 
     def write(self, vals):
         if vals and 'kanban_state' not in vals and 'stage_id' in vals:
@@ -221,11 +421,8 @@ class MaintenanceRequestCustom(models.Model):
             last_stage = self.env['maintenance.stage'].search([], order='sequence desc', limit=1)
             print('Last stage >>>', last_stage.name)
 
-
             if stage.id == last_stage.id:
                 vals['close_date'] = fields.Date.today()
-
-
 
                 activity = self.activity_schedule(
                     'mail.mail_activity_data_todo',
@@ -263,6 +460,35 @@ class MaintenanceRequestCustom(models.Model):
                         })
 
         res = super(MaintenanceRequestCustom, self).write(vals)
+        print("vals from def write>>>>>>>>>>>", vals)
+        for record in self:
+            if record.maintenance_request_id:
+                update_vals = {}
+                if 'name' in vals:
+                    update_vals['name'] = record.name
+                if 'equipment_id' in vals:
+                    update_vals['equipment_id'] = record.equipment_id.id
+                if 'description' in vals:
+                    update_vals['description'] = record.description
+                if 'priority' in vals:
+                    update_vals['priority'] = record.priority
+                if 'schedule_date' in vals:
+                    update_vals['schedule_date'] = record.scheduled_date
+                if 'duration' in vals:
+                    update_vals['duration'] = record.duration
+                if 'department_id' in vals:
+                    update_vals['department_id'] = record.department_id.id
+                if 'maintenance_team_id' in vals:
+                    update_vals['maintenance_team_id'] = record.maintenance_team_id.id
+                if 'maintenance_type' in vals:
+                    update_vals['maintenance_type'] = record.maintenance_type
+                if 'machine_temperature' in vals:
+                    update_vals['machine_temperature'] = record.machine_temperature
+                if 'work_area_temperature' in vals:
+                    update_vals['work_area_temperature'] = record.work_area_temperature
+
+                if update_vals:
+                    record.maintenance_request_id.sudo().write(update_vals)
 
         if vals.get('owner_user_id') or vals.get('employee_id'):
             self._add_followers()
@@ -285,127 +511,7 @@ class MaintenanceRequestCustom(models.Model):
 
         return res
 
-    @api.model
-    def create(self, vals):
-        if 'stage_id' not in vals:
-            first_stage = self.env['maintenance.stage'].search([], order='sequence asc', limit=1)
 
-            print('first_stage>>>>>>>>>>>', first_stage)
-
-            if first_stage:
-                vals['stage_id'] = first_stage.id
-
-        # Pass close date if stage is done
-        if vals.get('stage_id'):
-            stage = self.env['maintenance.stage'].browse(vals['stage_id'])
-
-            print('stage>>>>>>>>>>>', stage.name)
-
-        record = super(MaintenanceRequestCustom, self).create(vals)
-        print("record create>>>>>>>>>>>>>>>>>>>=", record)
-
-        if record.department_id:
-            record._create_department_activity(record)
-
-        # Prepare values for linked request
-        maintenance_request_vals = {
-            'name': record.name,
-            'equipment_id': record.equipment_id.id,
-            'description': record.description,
-            'request_date': record.request_date,
-            'priority': record.priority,
-            'user_id': record.employee_id.user_id.id if record.employee_id else False,
-            'responsible_employee_id': record.employee_id.id if record.employee_id else False,
-            'schedule_date': record.scheduled_date,
-            'duration': record.duration,
-            'department_id': record.department_id.id,
-            'maintenance_type': record.maintenance_type,
-            'maintenance_team_id': record.maintenance_team_id.id,
-            'instruction_type': record.instruction_type,
-            'instruction_pdf': record.instruction_pdf,
-            'instruction_google_slide': record.instruction_google_slide,
-            'instruction_text': record.instruction_text,
-            'recurring_maintenance': record.recurring_maintenance,
-            'email_cc': record.email_cc,
-        }
-
-        linked_request = self.env['maintenance.request'].sudo().create(maintenance_request_vals)
-        # record.maintenance_request_id = linked_request.id
-
-        # Attach instruction PDF if available
-        if record.instruction_type == 'pdf' and record.instruction_pdf:
-            self.env['ir.attachment'].create({
-                'name': f"{record.name}_instruction.pdf",
-                'type': 'binary',
-                'datas': record.instruction_pdf,
-                'res_model': 'maintenance.request',
-                'res_id': linked_request.id,
-                'mimetype': 'application/pdf'
-            })
-
-        # All Links
-        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-        custom_url = f"{base_url}/web#id={record.id}&model=maintenance.request.custom&view_type=form"
-        print("record>>>>>>>>>>>>>>>>>>>=",record)
-        request_url = f"{base_url}/web#id={linked_request.id}&model=maintenance.request&view_type=form"
-
-        # Activity in maintenance.request
-        activity_note_maintenance_request = f"""
-            <p>
-                <strong>{_("A New Maintenance Request Has Been Created. Please Review And Follow Up.")}</strong>
-            </p>
-            <ul>
-                <li><strong>{_("Request Name")}:</strong> {record.name}</li>
-                <li><strong>{_("Equipment")}:</strong> {record.equipment_id.name or 'N/A'}</li>
-                <li><strong>{_("Priority")}:</strong> {dict(record._fields['priority'].selection).get(record.priority) or ' '}</li>
-                <li><strong>{_("Scheduled Date")}:</strong> {record.scheduled_date or ' '}</li>
-            </ul>
-            <p>
-            <p>
-            🔗 <a href="{request_url}" target="_blank" style="color:#0b5394;text-decoration:underline;">{_("Open Original Request")}</a>
-        </p>
-            </p>
-        """
-        # Activity in maintenance.request.custom
-        activity_note_maintenance_request_custom = f"""
-                    <p>
-                        <strong>{_("A New Maintenance Request Has Been Created. Please Review And Follow Up.")}</strong>
-                    </p>
-                    <ul>
-                        <li><strong>{_("Request Name")}:</strong> {record.name}</li>
-                        <li><strong>{_("Equipment")}:</strong> {record.equipment_id.name or 'N/A'}</li>
-                        <li><strong>{_("Priority")}:</strong> {dict(record._fields['priority'].selection).get(record.priority) or ' '}</li>
-                        <li><strong>{_("Scheduled Date")}:</strong> {record.scheduled_date or ' '}</li>
-                    </ul>
-                    <p>
-                    <p>
-                    🔗 <a href="{custom_url}" target="_blank" style="color:#0b5394;text-decoration:underline;">{_("Open Custom Request")}</a><br/>
-                </p>
-                    </p>
-                """
-
-        # ⬇ إشعار في الموديل الأساسي
-        self.env['mail.activity'].create({
-            'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
-            'summary': _("New Maintenance Request: %s") % record.name,
-            'note': activity_note_maintenance_request,
-            'user_id': record.employee_id.user_id.id if record.employee_id else self.env.uid,
-            'res_id': linked_request.id,
-            'res_model_id': self.env['ir.model']._get_id('maintenance.request'),
-            'date_deadline': fields.Date.today(),
-        })
-
-        # ⬇ إشعار في الموديل الـ Custom
-        self.env['mail.activity'].create({
-            'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
-            'summary': _("New Custom Maintenance Request: %s") % record.name,
-            'note': activity_note_maintenance_request_custom,
-            'user_id': record.employee_id.user_id.id if record.employee_id else self.env.uid,
-            'res_id': record.id,
-            'res_model_id': self.env['ir.model']._get_id('maintenance.request.custom'),
-            'date_deadline': fields.Date.today(),
-        })
-        return record
 
     def _create_department_activity(self, request):
         department = request.department_id
@@ -525,3 +631,12 @@ class MaintenanceRequestCustom(models.Model):
 
             if request.maintenance_team_id and request.maintenance_team_id.company_id and request.maintenance_team_id.company_id.id != request.company_id.id:
                 request.maintenance_team_id = False
+
+class MaintenanceTechnicianLine(models.Model):
+    _name = "maintenance.technician.line"
+    _description = "Maintenance Technician Line"
+
+    request_id = fields.Many2one("maintenance.request.custom", string="Maintenance Request")
+    technician_id = fields.Many2one("res.partner", string="Technician")
+    work_hours = fields.Float(string="Working Hours")
+    mc_notes = fields.Text(string="M/C Notes")

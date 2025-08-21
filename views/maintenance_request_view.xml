@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="maintenance_request_form_inherit" model="ir.ui.view">
+            <field name="name">maintenance.request.form.preventive.report</field>
+            <field name="model">maintenance.request</field>
+            <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[2]" position="after">
+                    <page string="Preventive Maintenance Report">
+                        <group>
+                            <group>
+                                <field name="check_motors"/>
+                                <field name="check_connections"/>
+                                <field name="check_units"/>
+                                <field name="check_filters"/>
+                            </group>
+                            <group>
+                                <field name="check_screw"/>
+                                <field name="check_compressor"/>
+                                <field name="check_electrical"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//page[3]" position="after">
+                    <page string="Maintenance Technician">
+                        <field name="line_ids">
+                            <list editable="bottom">
+                                <field name="technician_id"/>
+                                <field name="work_hours"/>
+                                <field name="mc_notes"/>
+                            </list>
+                        </field>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='email_cc']" position="after">
+                    <field name="machine_temperature"/>
+                    <field name="work_area_temperature"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_equipment_catalogue_tree" model="ir.ui.view">
+        <field name="name">equipment.catalogue.tree</field>
+        <field name="model">equipment.catalogue</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_equipment_catalogue_form" model="ir.ui.view">
+        <field name="name">equipment.catalogue.form</field>
+        <field name="model">equipment.catalogue</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="file_type"/>
+                        <field name="image" invisible="file_type != 'image'" widget="image"/>
+                        <field name="attachment" filename="attachment_filename" invisible="file_type != 'pdf'"
+                               widget="pdf_viewer"/>
+                        <field name="attachment_filename" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_equipment_catalogue" model="ir.actions.act_window">
+        <field name="name">Equipment Catalogue</field>
+        <field name="res_model">equipment.catalogue</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <menuitem
+            id="menu_equipment_catalogue"
+            name="Equipment Catalogue"
+            parent="maintenance.menu_maintenance_configuration"
+            action="action_equipment_catalogue"
+            sequence="25"/>
+
+
+</odoo>
