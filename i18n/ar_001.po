@@ -18,7 +18,8 @@ msgstr ""
 #. module: maintenance_request_custom
 #: model:ir.actions.report,print_report_name:maintenance_request_custom.report_maintenance_request_custom_report
 msgid "'Preventive Maintenance Report'"
-msgstr ""
+msgstr "'تقرير الصيانة '"
+
 
 #. module: maintenance_request_custom
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
@@ -58,7 +59,7 @@ msgstr "<strong>نوع الصيانة :</strong>"
 #. module: maintenance_request_custom
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 msgid "<strong>Order Date :</strong>"
-msgstr "<strong>تاريخ الطلب :</strong>"
+msgstr "<strong>فتح امر صيانة بتاريخ:</strong>"
 
 #. module: maintenance_request_custom
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
@@ -707,7 +708,7 @@ msgstr "وقائي"
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_request_form_inherit
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
 msgid "Preventive Maintenance Report"
-msgstr "تقرير الصيانة الوقائية"
+msgstr "بنود الصيانة"
 
 #. module: maintenance_request_custom
 #. odoo-python

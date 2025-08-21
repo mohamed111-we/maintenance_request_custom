@@ -11,7 +11,7 @@
     with custom equipment types and status tracking.""",
     'category': 'Maintenance',
     'author': 'Eng.Mathany Saad',
-    'depends': ['base', 'maintenance','hr'],
+    'depends': ['base', 'maintenance','hr','mail'],
     'data': [
         'security/maintenance_security.xml',
         'security/ir.model.access.csv',

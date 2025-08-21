@@ -20,13 +20,14 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="file_type"/>
-                        <field name="image" invisible="file_type != 'image'" widget="image"/>
-                        <field name="attachment" filename="attachment_filename" invisible="file_type != 'pdf'"
-                               widget="pdf_viewer"/>
-                        <field name="attachment_filename" invisible="1"/>
+<!--                        <field name="file_type"/>-->
+<!--                        <field name="image" invisible="file_type != 'image'" widget="image"/>-->
+<!--                        <field name="attachment" filename="attachment_filename" invisible="file_type != 'file'"-->
+<!--                               widget="pdf_viewer"/>-->
+<!--                        <field name="attachment_filename" invisible="1"/>-->
                     </group>
                 </sheet>
+                <chatter/>
             </form>
         </field>
     </record>
