@@ -46,33 +46,44 @@ class MaintenanceRequest(models.Model):
         help="Record the work area temperature"
     )
 
-    check_motors = fields.Boolean(
-        string="Check all motors and gearboxes"
+    maintenance_instructions_request_ids = fields.One2many(
+        'maintenance.instructions',
+        'request_id',
+        string="Maintenance Instructions"
     )
 
-    check_connections = fields.Boolean(
-        string="Check looseness connections, hoses, and pipes"
-    )
+    @api.model_create_multi
+    def create(self, vals_list):
+        """
+        Automatically fill maintenance_instructions_ids when creating a new maintenance.request.
+        """
+        records = super().create(vals_list)
+        for record in records:
+            if record.equipment_id:
+                for instruction in record.equipment_id.maintenance_instructions_ids:
+                    self.env['maintenance.instructions'].create({
+                        'name': instruction.name,
+                        'request_id': record.id,
+                    })
+        return records
 
-    check_units = fields.Boolean(
-        string="Check input, output, and storage units"
-    )
-
-    check_filters = fields.Boolean(
-        string="Check filters"
-    )
-
-    check_screw = fields.Boolean(
-        string="Check screw conveyor"
-    )
-
-    check_compressor = fields.Boolean(
-        string="Check compressor for scale opening/closing"
-    )
-
-    check_electrical = fields.Boolean(
-        string="Check and clean all electrical components and replace if necessary"
-    )
+    def write(self, values):
+        """
+        Automatically update maintenance_instructions_ids when equipment_id is changed.
+        """
+        res = super().write(values)
+        if 'equipment_id' in values:
+            for record in self:
+                # Clear existing instructions
+                record.maintenance_instructions_request_ids.unlink()
+                # Copy instructions from the new equipment_id
+                if record.equipment_id:
+                    for instruction in record.equipment_id.maintenance_instructions_ids:
+                        self.env['maintenance.instructions'].create({
+                            'name': instruction.name,
+                            'request_id': record.id,
+                        })
+        return res
 
 
     @api.model
@@ -127,7 +138,6 @@ class MaintenanceRequest(models.Model):
                 activity_type = self.env.ref('mail.mail_activity_data_todo')
                 summary = "New Maintenance Activity"
                 note = "Please review the maintenance request."
-
                 self.env['mail.activity'].create({
                     'activity_type_id': activity_type.id,
                     'summary': summary,
@@ -155,5 +165,6 @@ class MaintenanceRequestLine(models.Model):
     technician_id = fields.Many2one("res.partner", string="Technician")
     work_hours = fields.Float(string="Working Hours")
     mc_notes = fields.Text(string="M/C Notes")
+
 
 

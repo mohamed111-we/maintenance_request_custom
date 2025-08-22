@@ -3,26 +3,20 @@
     <data>
 
         <record id="maintenance_request_form_inherit" model="ir.ui.view">
-            <field name="name">maintenance.request.form.preventive.report</field>
+            <field name="name">maintenance.request.form.preventive</field>
             <field name="model">maintenance.request</field>
             <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <xpath expr="//page[2]" position="after">
-                    <page string="Preventive Maintenance Report">
-                        <group>
-                            <group>
-                                <field name="check_motors"/>
-                                <field name="check_connections"/>
-                                <field name="check_units"/>
-                                <field name="check_filters"/>
-                            </group>
-                            <group>
-                                <field name="check_screw"/>
-                                <field name="check_compressor"/>
-                                <field name="check_electrical"/>
-                            </group>
-                        </group>
+                    <page string="Maintenance Instructions">
+                        <field name="maintenance_instructions_request_ids">
+                            <list editable="bottom">
+                                <field name="name"/>
+                                <field name="done"/>
+                                <field name="not_done"/>
+                            </list>
+                        </field>
                     </page>
                 </xpath>
                 <xpath expr="//page[3]" position="after">

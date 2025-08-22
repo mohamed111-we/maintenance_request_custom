@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Custom Maintenance Requests',
+    'name': 'Custom Maintenance',
     'version': '18.0.1.0',
     'sequence': 0,
     'summary': 'Manage custom maintenance requests',
@@ -18,9 +18,10 @@
         'views/maintenance_request_custom_views.xml',
         'views/maintenance_equipment.xml',
         'views/maintenance_equipment_category.xml',
-        'views/menu_equipment_catalogue_view.xml',
+        'views/menu_equipment_catalog_view.xml',
         'views/maintenance_request_view.xml',
         'reports/preventive_maintenance_report.xml',
+        'reports/maintenace_report.xml',
     ],
     'installable': True,
     'application': True,

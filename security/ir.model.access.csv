@@ -6,3 +6,5 @@ access_maintenance_request_admin,maintenance.team.admin,maintenance.model_mainte
 access_equipment_catalogue,equipment.catalogue,model_equipment_catalogue,,1,1,1,1
 access_maintenance_technician_line,equipment.maintenance_technician_line,model_maintenance_technician_line,,1,1,1,1
 access_maintenance_request_line,equipment.maintenance_request_line,model_maintenance_request_line,,1,1,1,1
+access_maintenance_instruction,maintenance.instruction,model_maintenance_instructions,,1,1,1,1
+access_maintenance_instruction_custom,maintenance.instruction.custom,model_maintenance_instructions_custom,,1,1,1,1

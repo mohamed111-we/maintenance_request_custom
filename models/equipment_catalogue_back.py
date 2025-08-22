@@ -27,15 +27,6 @@ class EquipmentCatalogue(models.Model):
         string="File Name"
     )
 
-    # if record.instruction_type == 'pdf' and record.instruction_pdf:
-    #     self.env['ir.attachment'].create({
-    #         'name': f"{record.name}_instruction.pdf",
-    #         'type': 'binary',
-    #         'datas': record.instruction_pdf,
-    #         'res_model': 'maintenance.request',
-    #         'res_id': linked_request.id,
-    #         'mimetype': 'application/pdf'
-    #     })
 
 
 

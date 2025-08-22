@@ -17,33 +17,6 @@ class MaintenanceRequestCustom(models.Model):
     line_ids = fields.One2many('maintenance.technician.line', 'request_id')
 
 
-    check_motors = fields.Boolean(
-        string="Check all motors and gearboxes"
-    )
-
-    check_connections = fields.Boolean(
-        string="Check looseness connections, hoses, and pipes"
-    )
-
-    check_units = fields.Boolean(
-        string="Check input, output, and storage units"
-    )
-
-    check_filters = fields.Boolean(
-        string="Check filters"
-    )
-
-    check_screw = fields.Boolean(
-        string="Check screw conveyor"
-    )
-
-    check_compressor = fields.Boolean(
-        string="Check compressor for scale opening/closing"
-    )
-
-    check_electrical = fields.Boolean(
-        string="Check and clean all electrical components and replace if necessary"
-    )
 
     machine_temperature = fields.Char(
         string="Machine Temperature",
@@ -182,38 +155,60 @@ class MaintenanceRequestCustom(models.Model):
         readonly=False,
         domain=lambda self: self._get_employee_domain()
     )
+    maintenance_instructions_request_ids_custom = fields.One2many(
+        'maintenance.instructions.custom',
+        'request_id',
+        string="Maintenance Instructions"
+    )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        """
+        Automatically fill maintenance_instructions_request_ids_custom when creating a new maintenance.request.custom.
+        """
+        records = super().create(vals_list)
+        for record in records:
+            if record.equipment_id:
+                for instruction in record.equipment_id.maintenance_instructions_ids:
+                    self.env['maintenance.instructions.custom'].create({
+                        'name': instruction.name,
+                        'request_id': record.id,
+                    })
+        return records
+
+    def write(self, values):
+        """
+        Automatically update maintenance_instructions_request_ids_custom when equipment_id is changed.
+        """
+        res = super().write(values)
+        if 'equipment_id' in values:
+            for record in self:
+                # Clear existing instructions
+                record.maintenance_instructions_request_ids_custom.unlink()
+                # Copy instructions from the new equipment_id
+                if record.equipment_id:
+                    for instruction in record.equipment_id.maintenance_instructions_ids:
+                        self.env['maintenance.instructions.custom'].create({
+                            'name': instruction.name,
+                            'request_id': record.id,
+                        })
+        return res
 
     @api.onchange('equipment_id')
     def _onchange_equipment_id(self):
         for record in self:
             if record.equipment_id:
-                record.check_motors = record.equipment_id.check_motors
-                record.check_connections = record.equipment_id.check_connections
-                record.check_units = record.equipment_id.check_units
-                record.check_filters = record.equipment_id.check_filters
-                record.check_screw = record.equipment_id.check_screw
-                record.check_compressor = record.equipment_id.check_compressor
-                record.check_electrical = record.equipment_id.check_electrical
                 record.machine_temperature = record.equipment_id.machine_temperature
                 record.work_area_temperature = record.equipment_id.work_area_temperature
             else:
-                record.check_motors = False
-                record.check_connections = False
-                record.check_units = False
-                record.check_filters = False
-                record.check_screw = False
-                record.check_compressor = False
-                record.check_electrical = False
                 record.machine_temperature = ''
                 record.work_area_temperature = ''
 
     def action_assign_activity(self):
-        """ إنشاء نشاط تلقائي لمدير القسم عند إنشاء طلب صيانة """
         for request in self:
-            # افترض أن عندك حقل department_id في الـ maintenance.request
             department = request.department_id
             if department and department.manager_id and department.manager_id.user_id:
-                activity_type = self.env.ref('mail.mail_activity_data_todo')  # النوع الافتراضي To Do
+                activity_type = self.env.ref('mail.mail_activity_data_todo')
                 summary = "Follow up on maintenance requests"
                 note = f"Please follow up on your maintenance request:{request.name}"
 
@@ -278,7 +273,6 @@ class MaintenanceRequestCustom(models.Model):
         if 'stage_id' not in vals:
             first_stage = self.env['maintenance.stage'].search([], order='sequence asc', limit=1)
 
-            print('first_stage>>>>>>>>>>>', first_stage)
 
             if first_stage:
                 vals['stage_id'] = first_stage.id
@@ -287,10 +281,8 @@ class MaintenanceRequestCustom(models.Model):
         if vals.get('stage_id'):
             stage = self.env['maintenance.stage'].browse(vals['stage_id'])
 
-            print('stage>>>>>>>>>>>', stage.name)
 
         record = super(MaintenanceRequestCustom, self).create(vals)
-        print("record create>>>>>>>>>>>>>>>>>>>=", record)
 
         if record.department_id:
             record._create_department_activity(record)
@@ -316,13 +308,6 @@ class MaintenanceRequestCustom(models.Model):
             'instruction_text': record.instruction_text,
             'recurring_maintenance': record.recurring_maintenance,
             'email_cc': record.email_cc,
-            'check_motors': record.check_motors,
-            'check_connections': record.check_connections,
-            'check_units': record.check_units,
-            'check_filters': record.check_filters,
-            'check_screw': record.check_screw,
-            'check_compressor': record.check_compressor,
-            'check_electrical': record.check_electrical,
             'machine_temperature': record.machine_temperature,
             'line_ids': [(0, 0, {
                 'technician_id': line.technician_id.id,
@@ -348,7 +333,6 @@ class MaintenanceRequestCustom(models.Model):
         # All Links
         base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         custom_url = f"{base_url}/web#id={record.id}&model=maintenance.request.custom&view_type=form"
-        print("record>>>>>>>>>>>>>>>>>>>=", record)
         request_url = f"{base_url}/web#id={linked_request.id}&model=maintenance.request&view_type=form"
 
         # Activity in maintenance.request
@@ -386,7 +370,6 @@ class MaintenanceRequestCustom(models.Model):
                         </p>
                     """
 
-        # ⬇ إشعار في الموديل الأساسي
         self.env['mail.activity'].create({
             'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
             'summary': _("New Maintenance Request: %s") % record.name,
@@ -397,7 +380,6 @@ class MaintenanceRequestCustom(models.Model):
             'date_deadline': fields.Date.today(),
         })
 
-        # ⬇ إشعار في الموديل الـ Custom
         self.env['mail.activity'].create({
             'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
             'summary': _("New Custom Maintenance Request: %s") % record.name,
@@ -416,10 +398,8 @@ class MaintenanceRequestCustom(models.Model):
         if 'stage_id' in vals:
 
             stage = self.env['maintenance.stage'].browse(vals['stage_id'])
-            print('stage>>>>>>>>>>>>', stage)
 
             last_stage = self.env['maintenance.stage'].search([], order='sequence desc', limit=1)
-            print('Last stage >>>', last_stage.name)
 
             if stage.id == last_stage.id:
                 vals['close_date'] = fields.Date.today()
@@ -460,7 +440,6 @@ class MaintenanceRequestCustom(models.Model):
                         })
 
         res = super(MaintenanceRequestCustom, self).write(vals)
-        print("vals from def write>>>>>>>>>>>", vals)
         for record in self:
             if record.maintenance_request_id:
                 update_vals = {}
@@ -640,3 +619,24 @@ class MaintenanceTechnicianLine(models.Model):
     technician_id = fields.Many2one("res.partner", string="Technician")
     work_hours = fields.Float(string="Working Hours")
     mc_notes = fields.Text(string="M/C Notes")
+
+
+
+class MaintenanceInstruction(models.Model):
+    _name = 'maintenance.instructions.custom'
+    _description = 'Maintenance Instructions'
+
+    name = fields.Char(string="Instruction", required=True)
+    done = fields.Boolean(string="Done")
+    not_done = fields.Boolean(string="Not Done")
+    request_id = fields.Many2one(
+        'maintenance.instructions.custom',
+        string="Maintenance Request",
+        ondelete='cascade'
+    )
+
+    @api.constrains('done', 'not_done')
+    def _check_instruction_status(self):
+        for record in self:
+            if record.done and record.not_done:
+                raise UserError(_("An instruction cannot be both Done and Not Done!"))
