@@ -178,7 +178,7 @@ class MaintenanceRequestLine(models.Model):
     _description = "Maintenance Request Line"
 
     request_id = fields.Many2one("maintenance.request", string="Maintenance Request")
-    technician_id = fields.Many2one("res.partner", string="Technician")
+    technician = fields.Char(string="Technician")
     work_hours = fields.Float(string="Working Hours")
     mc_notes = fields.Text(string="M/C Notes")
 

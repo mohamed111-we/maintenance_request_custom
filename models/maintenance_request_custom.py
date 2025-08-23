@@ -326,7 +326,7 @@ class MaintenanceRequestCustom(models.Model):
             'email_cc': record.email_cc,
             'machine_temperature': record.machine_temperature,
             'line_ids': [(0, 0, {
-                'technician_id': line.technician_id.id,
+                'technician': line.technician.id,
                 'work_hours': line.work_hours,
                 'mc_notes': line.mc_notes
             }) for line in record.line_ids],
@@ -632,7 +632,7 @@ class MaintenanceTechnicianLine(models.Model):
     _description = "Maintenance Technician Line"
 
     request_id = fields.Many2one("maintenance.request.custom", string="Maintenance Request")
-    technician_id = fields.Many2one("res.partner", string="Technician")
+    technician = fields.Char(string="Technician")
     work_hours = fields.Float(string="Working Hours")
     mc_notes = fields.Text(string="M/C Notes")
 

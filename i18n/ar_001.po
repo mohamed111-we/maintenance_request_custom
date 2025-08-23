@@ -299,7 +299,7 @@ msgstr "المعدات"
 #: model:ir.model,name:maintenance_request_custom.model_equipment_catalogue
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__name
 #: model:ir.ui.menu,name:maintenance_request_custom.menu_equipment_catalogue
-msgid "Equipment Catalog"
+msgid "Equipment Catalogue"
 msgstr "كتالوج المعدات"
 
 #. module: maintenance_request_custom
@@ -550,6 +550,8 @@ msgstr "فرق الصيانة"
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
 msgid "Maintenance Technician"
 msgstr "فني صيانة"
+
+
 
 #. module: maintenance_request_custom
 #: model:ir.model,name:maintenance_request_custom.model_maintenance_technician_line
@@ -846,8 +848,8 @@ msgid "Team Members"
 msgstr "أعضاء الفريق"
 
 #. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__technician_id
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__technician_id
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__technician
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__technician
 msgid "Technician"
 msgstr "فني"
 
@@ -1036,91 +1038,54 @@ msgstr "فتح الطلب المخصص"
 msgid "Open Original Request"
 msgstr "افتح الطلب الأصلي"
 
-
 #. module: maintenance_request_custom
-#: model:ir.model,name:maintenance_request_custom.model_maintenance_instructions
-#: model:ir.model,name:maintenance_request_custom.model_maintenance_instructions_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__maintenance_instructions_ids
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__maintenance_instructions_request_ids
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__maintenance_instructions_request_ids_custom
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_equipment_form_inherit
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_request_form_inherit
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
 msgid "Maintenance Instructions"
 msgstr "تعليمات الصيانة"
-#. module: maintenance_request_custom
-#: model:ir.actions.report,name:maintenance_request_custom.report_maintenance_request_report
-msgid "Maintenance Report"
-msgstr "تقرير الصيانة"
 
 
-e: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__write_date
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__write_date
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__write_date
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__write_date
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__write_date
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__write_date
-msgid "Last Updated on"
-msgstr "آخر تحديث في"
+
 
 #. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__name
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__name
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__instruction_type
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
-msgid "Instruction"
-msgstr "التعليمات"
-
-#. module: maintenance_request_custom
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
-msgid "Instructions"
-msgstr "التعليمات"
-
-
-#. module: maintenance_request_custom
-#. odoo-python
-#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__equipment_name
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__equipment_id
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__equipment_id
-msgid "Equipment"
-msgstr "المعدات"
-
-#. module: maintenance_request_custom
-#. odoo-python
-#: code:addons/maintenance_request_custom/models/maintenance_equipment.py:0
-#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
-msgid "An instruction cannot be both Done and Not Done!"
-msgstr "التعليمات لا يمكن ان تكون تم التنفيذ ولم يتم التنفيذ"
-
-
-#. module: maintenance_request_custom
-#. odoo-python
-#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__equipment_name
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__equipment_id
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__equipment_id
-msgid "Equipment"
-msgstr "المعدات"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__attachment_ids
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_equipment_catalogue_form
-msgid "Attachments"
-msgstr "المرافقات"
-
-#. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__name
 msgid "Instruction"
 msgstr "تعليمات"
 
 #. module: maintenance_request_custom
-#: code:addons/maintenance_request_custom/models/maintenance_instructions.py:0
-msgid "An instruction cannot be both Done and Not Done!"
-msgstr "لا يمكن أن تكون التعليمات مُكتملة وغير مُكتملة في نفس الوقت!"
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__name
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__name
+msgid "Instruction"
+msgstr "تعليمات"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__done
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__done
+msgid "Done"
+msgstr "تم التنفيذ"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__not_done
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__not_done
+msgid "Not Done"
+msgstr "لم يتم التنفيذ"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__request_id
+msgid "Maintenance Request"
+msgstr "طلب صيانة"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__equipment_id
+msgid "Equipment"
+msgstr "المعدة"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_equipment_form_inherit
+msgid "Maintenance Instructions"
+msgstr "تعليمات الصيانة"
+
 
 

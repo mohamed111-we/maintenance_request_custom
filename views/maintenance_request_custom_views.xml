@@ -92,7 +92,7 @@
                         <page string="Maintenance Technician">
                             <field name="line_ids">
                                 <list editable="bottom">
-                                    <field name="technician_id"/>
+                                    <field name="technician"/>
                                     <field name="work_hours"/>
                                     <field name="mc_notes"/>
                                 </list>
