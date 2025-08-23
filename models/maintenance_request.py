@@ -46,27 +46,12 @@ class MaintenanceRequest(models.Model):
         help="Record the work area temperature"
     )
 
-    # maintenance_instructions_request_ids = fields.One2many(
-    #     'maintenance.instructions',
-    #     'request_id',
-    #     string="Maintenance Instructions"
-    # )
-
-    done_instruction_ids = fields.One2many(
+    maintenance_instructions_request_ids = fields.One2many(
         'maintenance.instructions',
         'request_id',
-        string="Done Instructions",
-        compute="_compute_done_instructions",
-        store=False
+        string="Maintenance Instructions"
     )
 
-    @api.depends('equipment_id.maintenance_instructions_ids.done')
-    def _compute_done_instructions(self):
-        for rec in self:
-            if rec.equipment_id:
-                rec.done_instruction_ids = rec.equipment_id.maintenance_instructions_ids.filtered(lambda ins: ins.done)
-            else:
-                rec.done_instruction_ids = False
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -79,6 +64,8 @@ class MaintenanceRequest(models.Model):
                 for instruction in record.equipment_id.maintenance_instructions_ids:
                     self.env['maintenance.instructions'].create({
                         'name': instruction.name,
+                        'done': instruction.done,
+                        'not_done': instruction.not_done,
                         'request_id': record.id,
                     })
         return records
@@ -96,8 +83,10 @@ class MaintenanceRequest(models.Model):
                 if record.equipment_id:
                     for instruction in record.equipment_id.maintenance_instructions_ids:
                         self.env['maintenance.instructions'].create({
-                            'name': instruction.name,
-                            'request_id': record.id,
+                             'name': instruction.name,
+                        'done': instruction.done,
+                        'not_done': instruction.not_done,
+                        'request_id': record.id,
                         })
         return res
 

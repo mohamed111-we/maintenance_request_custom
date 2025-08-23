@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:03+0000\n"
-"PO-Revision-Date: 2025-08-21 14:03+0000\n"
+"POT-Creation-Date: 2025-08-23 16:52+0000\n"
+"PO-Revision-Date: 2025-08-23 16:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,9 @@ msgstr ""
 
 #. module: maintenance_request_custom
 #: model:ir.actions.report,print_report_name:maintenance_request_custom.report_maintenance_request_custom_report
+#: model:ir.actions.report,print_report_name:maintenance_request_custom.report_maintenance_request_report
 msgid "'Preventive Maintenance Report'"
 msgstr "'تقرير الصيانة '"
-
 
 #. module: maintenance_request_custom
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
@@ -37,6 +37,12 @@ msgid "<strong>Coding number :</strong>"
 msgstr "<strong>رقم الكود :</strong>"
 
 #. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+msgid "<strong>Coding number:</strong>"
+msgstr "<strong>رقم الكود :</strong>"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 msgid "<strong>Finishing Date:</strong>"
 msgstr "<strong>تاريخ الانتهاء :</strong>"
@@ -47,8 +53,18 @@ msgid "<strong>Machine Name :</strong>"
 msgstr "<strong>اسم الماكينة :</strong>"
 
 #. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+msgid "<strong>Machine Name:</strong>"
+msgstr "<strong>اسم الماكينة :</strong>"
+
+#. module: maintenance_request_custom
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 msgid "<strong>Maintenance Department manager :</strong>"
+msgstr "<strong>مدير قسم الصيانة :</strong>"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+msgid "<strong>Maintenance Department manager:</strong>"
 msgstr "<strong>مدير قسم الصيانة :</strong>"
 
 #. module: maintenance_request_custom
@@ -57,8 +73,18 @@ msgid "<strong>Maintenance Type :</strong>"
 msgstr "<strong>نوع الصيانة :</strong>"
 
 #. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+msgid "<strong>Maintenance Type:</strong>"
+msgstr "<strong>نوع الصيانة :</strong>"
+
+#. module: maintenance_request_custom
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 msgid "<strong>Order Date :</strong>"
+msgstr "<strong>فتح امر صيانة بتاريخ:</strong>"
+
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+msgid "<strong>Order Date:</strong>"
 msgstr "<strong>فتح امر صيانة بتاريخ:</strong>"
 
 #. module: maintenance_request_custom
@@ -66,31 +92,47 @@ msgstr "<strong>فتح امر صيانة بتاريخ:</strong>"
 msgid "<strong>Supervisor :</strong>"
 msgstr "<strong>المشرف :</strong>"
 
+#. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+msgid "<strong>Supervisor:</strong>"
+msgstr "<strong>المشرف :</strong>"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_needaction
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_needaction
 msgid "Action Needed"
 msgstr "إجراء مطلوب"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__activity_ids
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_ids
 msgid "Activities"
 msgstr "الأنشطة"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__activity_exception_decoration
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_exception_decoration
 msgid "Activity Exception Decoration"
 msgstr "زخرفة استثناء النشاط"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__activity_state
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_state
 msgid "Activity State"
 msgstr "حالة النشاط"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__activity_type_icon
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_type_icon
 msgid "Activity Type Icon"
 msgstr "أيقونة نوع النشاط"
+
+#. module: maintenance_request_custom
+#. odoo-python
+#: code:addons/maintenance_request_custom/models/maintenance_equipment.py:0
+#: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+msgid "An instruction cannot be both Done and Not Done!"
+msgstr "لا يمكن تنفيذ التعليمات وعدم تنفيذها في نفس الوقت!"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__archive
@@ -98,15 +140,16 @@ msgid "Archived"
 msgstr "مؤرشف"
 
 #. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__attachment
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__image
-msgid "Attachment"
-msgstr "مرفق"
-
-#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_attachment_count
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_attachment_count
 msgid "Attachment Count"
 msgstr "عدد المرفقات"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__attachment_ids
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_equipment_catalogue_form
+msgid "Attachments"
+msgstr "المرفقات"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__available_technician_ids
@@ -139,55 +182,6 @@ msgid "Category Code"
 msgstr "رمز الفئة"
 
 #. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__check_motors
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__check_motors
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__check_motors
-msgid "Check all motors and gearboxes"
-msgstr "فحص جميع المواتير والجيربوكس"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__check_electrical
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__check_electrical
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__check_electrical
-msgid "Check and clean all electrical components and replace if necessary"
-msgstr "فحص وتنظيف جميع المكونات الكهربائية وتغيير مايلزم"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__check_compressor
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__check_compressor
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__check_compressor
-msgid "Check compressor for scale opening/closing"
-msgstr "فحص كمبروسور فتح وغلق الميزان"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__check_filters
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__check_filters
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__check_filters
-msgid "Check filters"
-msgstr "فحص الفلاتر"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__check_units
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__check_units
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__check_units
-msgid "Check input, output, and storage units"
-msgstr "فحص وحدة الادخال ووحدة الاخراج ووحدة التخزين"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__check_connections
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__check_connections
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__check_connections
-msgid "Check looseness connections, hoses, and pipes"
-msgstr "فحص وصلات الخلخلة والخراطيم والمواسير"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__check_screw
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__check_screw
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__check_screw
-msgid "Check screw conveyor"
-msgstr "فحص البريمة"
-
-#. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__close_date
 msgid "Close Date"
 msgstr "تاريخ الإغلاق"
@@ -209,6 +203,8 @@ msgstr "تصحيحي"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__create_uid
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__create_uid
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__create_uid
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__create_uid
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__create_uid
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__create_uid
@@ -222,6 +218,8 @@ msgstr "أنشئ بواسطة المستخدم"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__create_date
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__create_date
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__create_date
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__create_date
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__create_date
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__create_date
@@ -261,11 +259,21 @@ msgstr "القسم"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__display_name
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__display_name
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__display_name
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__display_name
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__display_name
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__display_name
 msgid "Display Name"
 msgstr "اسم العرض"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__done
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__done
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
+msgid "Done"
+msgstr "تم التنفيذ"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__duration
@@ -290,15 +298,25 @@ msgstr "طلبات الموظفين"
 #. module: maintenance_request_custom
 #. odoo-python
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__equipment_name
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__equipment_id
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__equipment_id
 msgid "Equipment"
-msgstr "المعدات"
+msgstr "المعدة"
+
+#. module: maintenance_request_custom
+#: model:ir.ui.menu,name:maintenance_request_custom.menu_equipment_catalogue
+msgid "Equipment Catalog"
+msgstr "كتالوج المعدات"
 
 #. module: maintenance_request_custom
 #: model:ir.actions.act_window,name:maintenance_request_custom.action_equipment_catalogue
+msgid "Equipment Catalogs"
+msgstr "كتالوج المعدات"
+
+#. module: maintenance_request_custom
 #: model:ir.model,name:maintenance_request_custom.model_equipment_catalogue
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__name
-#: model:ir.ui.menu,name:maintenance_request_custom.menu_equipment_catalogue
 msgid "Equipment Catalogue"
 msgstr "كتالوج المعدات"
 
@@ -311,33 +329,27 @@ msgstr "كود الصنف"
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
 msgid "Example: Screen not working"
 msgstr "مثال: الشاشة لا تعمل"
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__attachment_filename
-msgid "File Name"
-msgstr "اسم الملف"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__file_type
-msgid "File Type"
-msgstr "نوع الملف"
 
 #. module: maintenance_request_custom
 #. odoo-python
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
 msgid "Finish the maintenance request."
-msgstr "إنهاء طلب الصيانة"
+msgstr ""
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_follower_ids
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_follower_ids
 msgid "Followers"
 msgstr "المتابعون"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_partner_ids
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_partner_ids
 msgid "Followers (Partners)"
 msgstr "المتابعون (شركاء)"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__activity_type_icon
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
 msgstr "أيقونة Font Awesome مثل fa-tasks"
@@ -359,6 +371,7 @@ msgid "Google Slide Link"
 msgstr "رابط عرض تقديمي من Google"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__has_message
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__has_message
 msgid "Has Message"
 msgstr "لديه رسالة"
@@ -370,6 +383,8 @@ msgstr "عالي"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__id
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__id
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__id
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__id
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__id
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__id
@@ -377,30 +392,30 @@ msgid "ID"
 msgstr "المعرف"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__activity_exception_icon
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_exception_icon
 msgid "Icon"
 msgstr "الأيقونة"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__activity_exception_icon
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__activity_exception_icon
 msgid "Icon to indicate an exception activity."
 msgstr "أيقونة للإشارة إلى نشاط استثنائي."
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__message_needaction
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_needaction
 msgid "If checked, new messages require your attention."
 msgstr "إذا تم تحديده، تتطلب الرسائل الجديدة انتباهك."
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__message_has_error
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__message_has_sms_error
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_has_error
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "إذا تم تحديده، فإن بعض الرسائل بها خطأ في التسليم."
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__equipment_catalogue__file_type__image
-msgid "Image File"
-msgstr "ملف صورة"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__kanban_state__normal
@@ -408,9 +423,13 @@ msgid "In Progress"
 msgstr "قيد التقدم"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__name
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__name
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__instruction_type
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 msgid "Instruction"
-msgstr "التعليمات"
+msgstr "تعليمات"
 
 #. module: maintenance_request_custom
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
@@ -423,6 +442,7 @@ msgid "Internal notes"
 msgstr "ملاحظات داخلية"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_is_follower
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_is_follower
 msgid "Is Follower"
 msgstr "متابع"
@@ -431,7 +451,7 @@ msgstr "متابع"
 #. odoo-python
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
 msgid "It was completed"
-msgstr "تم الانتهاء منه"
+msgstr ""
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__kanban_state
@@ -440,6 +460,8 @@ msgstr "حالة كانبان"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__write_uid
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__write_uid
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__write_uid
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__write_uid
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__write_uid
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__write_uid
@@ -448,6 +470,8 @@ msgstr "آخر تحديث بواسطة"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__write_date
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__write_date
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__write_date
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__write_date
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__write_date
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__write_date
@@ -464,7 +488,6 @@ msgstr "سطر"
 msgid "Linked Original Request"
 msgstr "الطلب الأصلي المرتبط"
 
-
 #. module: maintenance_request_custom
 #: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__priority__1
 msgid "Low"
@@ -477,15 +500,16 @@ msgid "M/C Notes"
 msgstr "ملاحظات الماكينة"
 
 #. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 msgid "M/C Preventive Maintenance Order"
-msgstr "أمر الصيانة الوقائية للماكينة"
+msgstr "أمر صيانة وقائية للآلة"
 
 #. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 msgid "M/C notes"
 msgstr "ملاحظات الماكينة"
-
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__machine_temperature
@@ -515,12 +539,32 @@ msgid "Maintenance Equipment Category"
 msgstr "فئة معدات الصيانة"
 
 #. module: maintenance_request_custom
+#: model:ir.model,name:maintenance_request_custom.model_maintenance_instructions
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_equipment__maintenance_instructions_ids
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__maintenance_instructions_request_ids
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__maintenance_instructions_request_ids_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_equipment_form_inherit
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_request_form_inherit
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+msgid "Maintenance Instructions"
+msgstr "تعليمات الصيانة"
+
+#. module: maintenance_request_custom
+#: model:ir.model,name:maintenance_request_custom.model_maintenance_instructions_custom
+msgid "Maintenance Instructions (Custom Request)"
+msgstr ""
+
+#. module: maintenance_request_custom
 #: model:ir.module.category,name:maintenance_request_custom.module_category_employee_maintenance
 msgid "Maintenance Management"
 msgstr "إدارة الصيانة"
 
 #. module: maintenance_request_custom
 #: model:ir.model,name:maintenance_request_custom.model_maintenance_request
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__request_id
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__request_id
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__request_id
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__request_id
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
@@ -531,7 +575,6 @@ msgstr "طلب الصيانة"
 #: model:ir.model,name:maintenance_request_custom.model_maintenance_request_line
 msgid "Maintenance Request Line"
 msgstr "سطر طلب الصيانة"
-
 
 #. module: maintenance_request_custom
 #: model:ir.actions.act_window,name:maintenance_request_custom.action_maintenance_request_custom
@@ -546,18 +589,16 @@ msgstr "فرق الصيانة"
 
 #. module: maintenance_request_custom
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_request_form_inherit
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
 msgid "Maintenance Technician"
 msgstr "فني صيانة"
 
-
-
 #. module: maintenance_request_custom
 #: model:ir.model,name:maintenance_request_custom.model_maintenance_technician_line
 msgid "Maintenance Technician Line"
 msgstr "سطر فني الصيانة"
-
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request__maintenance_type
@@ -566,11 +607,13 @@ msgid "Maintenance Type"
 msgstr "نوع الصيانة"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_has_error
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_has_error
 msgid "Message Delivery error"
 msgstr "خطأ في تسليم الرسالة"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_ids
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_ids
 msgid "Messages"
 msgstr "الرسائل"
@@ -581,6 +624,7 @@ msgid "Months"
 msgstr "أشهر"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__my_activity_date_deadline
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__my_activity_date_deadline
 msgid "My Activity Deadline"
 msgstr "موعد النشاط الخاص بي"
@@ -589,25 +633,25 @@ msgstr "موعد النشاط الخاص بي"
 #. odoo-python
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
 msgid "N/A"
-msgstr "غير متوفر"
+msgstr ""
 
 #. module: maintenance_request_custom
 #. odoo-python
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
 msgid "New Custom Maintenance Request: %s"
-msgstr "طلب صيانة مخصص جديد: %s"
+msgstr ""
 
 #. module: maintenance_request_custom
 #. odoo-python
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
 msgid "New Maintenance Request for %s"
-msgstr "طلب صيانة جديد لـ %s"
+msgstr ""
 
 #. module: maintenance_request_custom
 #. odoo-python
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
 msgid "New Maintenance Request: %s"
-msgstr "طلب صيانة جديد: %s"
+msgstr ""
 
 #. module: maintenance_request_custom
 #. odoo-python
@@ -615,26 +659,42 @@ msgstr "طلب صيانة جديد: %s"
 msgid "New maintenance request created for your department"
 msgstr "تم إنشاء طلب صيانة جديد لقسمك"
 
-
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__activity_date_deadline
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr "موعد النشاط التالي"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__activity_summary
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_summary
 msgid "Next Activity Summary"
 msgstr "ملخص النشاط التالي"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__activity_type_id
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_type_id
 msgid "Next Activity Type"
 msgstr "نوع النشاط التالي"
 
 #. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
+msgid "No instructions available for this equipment."
+msgstr "لا توجد تعليمات متاحة لهذه المعدات."
+
+#. module: maintenance_request_custom
 #: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__priority__2
 msgid "Normal"
 msgstr "عادي"
+
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__not_done
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__not_done
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
+msgid "Not Done"
+msgstr "لم يتم التنفيذ"
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__description
@@ -643,26 +703,31 @@ msgid "Notes"
 msgstr "ملاحظات"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_needaction_counter
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_needaction_counter
 msgid "Number of Actions"
 msgstr "عدد الإجراءات"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_has_error_counter
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_has_error_counter
 msgid "Number of errors"
 msgstr "عدد الأخطاء"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__message_needaction_counter
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_needaction_counter
 msgid "Number of messages requiring action"
 msgstr "عدد الرسائل التي تتطلب إجراءً"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__message_has_error_counter
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr "عدد الرسائل التي بها خطأ في التسليم"
 
 #. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
 msgid "Number of working hours"
 msgstr "عدد ساعات العمل"
@@ -680,12 +745,6 @@ msgid "PDF"
 msgstr "ملف PDF"
 
 #. module: maintenance_request_custom
-#: model:ir.model.fields.selection,name:maintenance_request_custom.selection__equipment_catalogue__file_type__pdf
-msgid "PDF File"
-msgstr "ملف PDF"
-
-
-#. module: maintenance_request_custom
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__instruction_google_slide
 msgid ""
 "Paste the url of your Google Slide. Make sure the access to the document is "
@@ -697,7 +756,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
 msgid "Please archive the application or continue with any remaining tasks."
-msgstr "يرجى أرشفة التطبيق أو متابعة أي مهام متبقية."
+msgstr ""
 
 #. module: maintenance_request_custom
 #: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__maintenance_type__preventive
@@ -706,9 +765,7 @@ msgstr "وقائي"
 
 #. module: maintenance_request_custom
 #: model:ir.actions.report,name:maintenance_request_custom.report_maintenance_request_custom_report
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_equipment_form_inherit
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_request_form_inherit
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
+#: model:ir.actions.report,name:maintenance_request_custom.report_maintenance_request_report
 msgid "Preventive Maintenance Report"
 msgstr "بنود الصيانة"
 
@@ -725,14 +782,12 @@ msgid "Ready for next stage"
 msgstr "جاهز للمرحلة التالية"
 
 #. module: maintenance_request_custom
-#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_equipment__machine_temperature
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request__machine_temperature
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__machine_temperature
 msgid "Record the machine temperature"
 msgstr "سجل درجة حرارة الجهاز"
 
 #. module: maintenance_request_custom
-#: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_equipment__work_area_temperature
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request__work_area_temperature
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__work_area_temperature
 msgid "Record the work area temperature"
@@ -780,7 +835,6 @@ msgstr "تاريخ الطلب"
 msgid "Request Lines"
 msgstr "أسطر الطلب"
 
-
 #. module: maintenance_request_custom
 #: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_kanban
 msgid "Requested by:"
@@ -798,12 +852,14 @@ msgid "Responsible Employee"
 msgstr "الموظف المسؤول"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__activity_user_id
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__activity_user_id
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__user_id
 msgid "Responsible User"
 msgstr "المستخدم المسؤول"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__message_has_sms_error
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__message_has_sms_error
 msgid "SMS Delivery error"
 msgstr "خطأ في تسليم الرسائل القصيرة"
@@ -825,6 +881,7 @@ msgid "Stage"
 msgstr "المرحلة"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__activity_state
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__activity_state
 msgid ""
 "Status based on activities\n"
@@ -854,12 +911,19 @@ msgid "Technician"
 msgstr "فني"
 
 #. module: maintenance_request_custom
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_maintenance_report_template
+#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
+msgid "Technician Work Log"
+msgstr "سجل أعمال الفني"
+
+#. module: maintenance_request_custom
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__instruction_text
 #: model:ir.model.fields.selection,name:maintenance_request_custom.selection__maintenance_request_custom__instruction_type__text
 msgid "Text"
 msgstr "نص"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__activity_exception_decoration
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr "نوع النشاط الاستثنائي المسجل."
@@ -891,11 +955,13 @@ msgid "View Request"
 msgstr "عرض الطلب"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_equipment_catalogue__website_message_ids
 #: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_custom__website_message_ids
 msgid "Website Messages"
 msgstr "رسائل الموقع"
 
 #. module: maintenance_request_custom
+#: model:ir.model.fields,help:maintenance_request_custom.field_equipment_catalogue__website_message_ids
 #: model:ir.model.fields,help:maintenance_request_custom.field_maintenance_request_custom__website_message_ids
 msgid "Website communication history"
 msgstr "سجل اتصالات الموقع"
@@ -934,14 +1000,11 @@ msgstr "تعليماتك"
 msgid "maintenance Request"
 msgstr "طلب الصيانة"
 
-
-
 #. module: maintenance_request_custom
 #. odoo-python
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
 msgid "🔧 Order status: Expired"
 msgstr "🔧 حالة الطلب: منتهي الصلاحية"
-
 
 #. module: maintenance_request_custom
 #. odoo-python
@@ -1037,55 +1100,3 @@ msgstr "فتح الطلب المخصص"
 #: code:addons/maintenance_request_custom/models/maintenance_request_custom.py:0
 msgid "Open Original Request"
 msgstr "افتح الطلب الأصلي"
-
-#. module: maintenance_request_custom
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_request_form_inherit
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.report_preventive_maintenance_report_template
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.view_maintenance_request_custom_form
-msgid "Maintenance Instructions"
-msgstr "تعليمات الصيانة"
-
-
-
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__name
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__name
-msgid "Instruction"
-msgstr "تعليمات"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_request_line__name
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_technician_line__name
-msgid "Instruction"
-msgstr "تعليمات"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__done
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__done
-msgid "Done"
-msgstr "تم التنفيذ"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__not_done
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__not_done
-msgid "Not Done"
-msgstr "لم يتم التنفيذ"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions_custom__request_id
-msgid "Maintenance Request"
-msgstr "طلب صيانة"
-
-#. module: maintenance_request_custom
-#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__equipment_id
-msgid "Equipment"
-msgstr "المعدة"
-
-#. module: maintenance_request_custom
-#: model_terms:ir.ui.view,arch_db:maintenance_request_custom.maintenance_equipment_form_inherit
-msgid "Maintenance Instructions"
-msgstr "تعليمات الصيانة"
-
-
-

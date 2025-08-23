@@ -67,34 +67,40 @@
                                 </div>
                             </div>
 
-                            <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 15px; text-align: center;">Maintenance Instructions</h3>
-                            <table style="width: 100%; border-collapse: collapse; font-size: 18px;">
+                            <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 15px; text-align: center;">
+                                Maintenance Instructions
+                            </h3>
+                            <table class="table table-bordered"
+                                   style="width: 100%; border-collapse: collapse; margin-top: 30px; border: 3px solid #2E86C1; font-size: 18px;">
                                 <thead style="background-color: #f2f2f2; border-bottom: 2px solid #ddd;">
                                     <tr>
-                                        <th style="padding: 10px; text-align: left;">Instruction</th>
+                                        <th style="padding: 10px; text-align: center;">Instruction</th>
                                         <th style="padding: 10px; text-align: center;">Done</th>
                                         <th style="padding: 10px; text-align: center;">Not Done</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr t-foreach="doc.maintenance_instructions_request_ids_custom" t-as="instruction">
-                                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                                        <td style="border: 2px solid #000; padding: 12px; text-align: center; font-size: 18px;">
                                             <t t-esc="instruction.name"/>
                                         </td>
-                                        <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ddd;">
+                                        <td style="border: 2px solid #000; padding: 12px; text-align: center; font-size: 18px;">
                                             <span t-if="instruction.done">✔️</span>
                                         </td>
-                                        <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ddd;">
+                                        <td style="border: 2px solid #000; padding: 12px; text-align: center; font-size: 18px;">
                                             <span t-if="instruction.not_done">❌</span>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div style="text-align: center; margin-top: 15px;" t-if="not doc.maintenance_instructions_request_ids_custom">
+                            <div style="text-align: center; margin-top: 15px;"
+                                 t-if="not doc.maintenance_instructions_request_ids_custom">
                                 <p>No instructions available for this equipment.</p>
                             </div>
 
-                            <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 15px; text-align: center;">Technician Work Log</h3>
+                            <h3 style="font-size: 22px; margin-top: 40px; margin-bottom: 15px; text-align: center;">
+                                Technician Work Log
+                            </h3>
                             <table class="table table-bordered"
                                    style="width: 100%; border-collapse: collapse; margin-top: 30px; border: 3px solid #2E86C1; font-size: 18px;">
                                 <thead style="background-color: #f2f2f2;">
@@ -113,7 +119,7 @@
                                 <tbody>
                                     <tr t-foreach="doc.line_ids" t-as="line">
                                         <td style="border: 2px solid #000; padding: 12px; text-align: center; font-size: 18px;">
-                                            <t t-esc="line.technician_id.name"/>
+                                            <t t-esc="line.technician"/>
                                         </td>
                                         <td style="border: 2px solid #000; padding: 12px; text-align: center; font-size: 18px;">
                                             <t t-esc="line.work_hours"/>

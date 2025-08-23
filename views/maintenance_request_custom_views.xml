@@ -82,10 +82,11 @@
                             </group>
                         </page>
                         <page string="Maintenance Instructions">
-                            <field name="done_instruction_ids">
+                            <field name="maintenance_instructions_request_ids_custom">
                             <list>
                                 <field name="name"/>
                                 <field name="done"/>
+                                <field name="not_done"/>
                             </list>
                         </field>
                         </page>
