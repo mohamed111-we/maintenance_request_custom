@@ -1113,3 +1113,14 @@ msgstr "المعدات"
 msgid "Attachments"
 msgstr "المرافقات"
 
+#. module: maintenance_request_custom
+#: model:ir.model.fields,field_description:maintenance_request_custom.field_maintenance_instructions__name
+msgid "Instruction"
+msgstr "تعليمات"
+
+#. module: maintenance_request_custom
+#: code:addons/maintenance_request_custom/models/maintenance_instructions.py:0
+msgid "An instruction cannot be both Done and Not Done!"
+msgstr "لا يمكن أن تكون التعليمات مُكتملة وغير مُكتملة في نفس الوقت!"
+
+

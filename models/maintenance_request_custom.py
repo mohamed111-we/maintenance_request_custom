@@ -155,11 +155,27 @@ class MaintenanceRequestCustom(models.Model):
         readonly=False,
         domain=lambda self: self._get_employee_domain()
     )
-    maintenance_instructions_request_ids_custom = fields.One2many(
-        'maintenance.instructions.custom',
+    # maintenance_instructions_request_ids_custom = fields.One2many(
+    #     'maintenance.instructions.custom',
+    #     'request_id',
+    #     string="Maintenance Instructions"
+    # )
+
+    done_instruction_ids = fields.One2many(
+        'maintenance.instructions',
         'request_id',
-        string="Maintenance Instructions"
+        string="Done Instructions",
+        compute="_compute_done_instructions",
+        store=False
     )
+
+    @api.depends('equipment_id.maintenance_instructions_ids.done')
+    def _compute_done_instructions(self):
+        for rec in self:
+            if rec.equipment_id:
+                rec.done_instruction_ids = rec.equipment_id.maintenance_instructions_ids.filtered(lambda ins: ins.done)
+            else:
+                rec.done_instruction_ids = False
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -630,7 +646,7 @@ class MaintenanceInstruction(models.Model):
     done = fields.Boolean(string="Done")
     not_done = fields.Boolean(string="Not Done")
     request_id = fields.Many2one(
-        'maintenance.instructions.custom',
+        'maintenance.request.custom',
         string="Maintenance Request",
         ondelete='cascade'
     )

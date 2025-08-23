@@ -82,13 +82,12 @@
                             </group>
                         </page>
                         <page string="Maintenance Instructions">
-                            <field name="maintenance_instructions_request_ids_custom">
-                                <list editable="bottom">
-                                    <field name="name"/>
-                                    <field name="done"/>
-                                    <field name="not_done"/>
-                                </list>
-                            </field>
+                            <field name="done_instruction_ids">
+                            <list>
+                                <field name="name"/>
+                                <field name="done"/>
+                            </list>
+                        </field>
                         </page>
                         <page string="Maintenance Technician">
                             <field name="line_ids">

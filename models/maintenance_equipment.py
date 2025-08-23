@@ -60,6 +60,7 @@ class MaintenanceInstruction(models.Model):
         ondelete='cascade'
     )
 
+
     @api.constrains('done', 'not_done')
     def _check_instruction_status(self):
         for record in self:
