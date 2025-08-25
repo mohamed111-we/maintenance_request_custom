@@ -109,7 +109,7 @@
                                 <tbody>
                                     <tr t-foreach="doc.line_ids" t-as="line">
                                         <td style="border: 2px solid #000; padding: 12px; text-align: center; font-size: 18px;">
-                                            <t t-esc="line.technician"/>
+                                            <t t-esc="line.technician.name"/>
                                         </td>
                                         <td style="border: 2px solid #000; padding: 12px; text-align: center; font-size: 18px;">
                                             <t t-esc="line.work_hours"/>

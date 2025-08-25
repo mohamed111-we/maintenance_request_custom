@@ -32,6 +32,8 @@ class MaintenanceEquipment(models.Model):
             prefix = self.category_id.category_code
             count = self.search_count([('category_id', '=', self.category_id.id)])
             self.item_code = f"{prefix}---{str(count).zfill(4)}"
+        else:
+            self.item_code = ''
         return res
 
 
@@ -56,7 +58,8 @@ class MaintenanceInstruction(models.Model):
         records = super().create(vals_list)
         for record in records:
             if record.equipment_id:
-                requests = self.env['maintenance.request.custom'].search([('equipment_id', '=', record.equipment_id.id)])
+                requests = self.env['maintenance.request.custom'].search(
+                    [('equipment_id', '=', record.equipment_id.id)])
                 for req in requests:
                     self.env['maintenance.instructions.custom'].create({
                         'name': record.name,
@@ -70,7 +73,8 @@ class MaintenanceInstruction(models.Model):
         res = super().write(vals)
         for record in self:
             if record.equipment_id:
-                requests = self.env['maintenance.request.custom'].search([('equipment_id', '=', record.equipment_id.id)])
+                requests = self.env['maintenance.request.custom'].search(
+                    [('equipment_id', '=', record.equipment_id.id)])
                 for req in requests:
                     instr = self.env['maintenance.instructions.custom'].search([
                         ('name', '=', record.name),
