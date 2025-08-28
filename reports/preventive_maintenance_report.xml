@@ -13,10 +13,11 @@
 
         <template id="report_preventive_maintenance_report_template">
             <t t-call="web.html_container">
+                <!--left To Right-->
                 <t t-set="rtl" t-value="docs and docs[0].env.lang == 'ar_001'"/>
                 <t t-foreach="docs" t-as="doc">
                     <t t-call="web.external_layout">
-                        <div class="page" t-att-style="'direction: %s;' % ('rtl' if rtl else 'ltr')">
+                        <div class="page" t-att-style="'direction: %s;' % ('rtl' if rtl else 'ltr')"> <!--left To Right-->
 
                             <div style="display: flex; direction: ltr; margin-bottom: 20px;">
                                 <div style="flex: 0 0 auto; margin-right: 20px;">
